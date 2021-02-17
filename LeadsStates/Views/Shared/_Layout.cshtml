@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>    
+    <title>Lead CRM-@ViewBag.Title</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,8 +18,9 @@
     <link href="../../assets/extra-libs/css-chart/css-chart.css" rel="stylesheet">
     <link href="../../assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
     <link href="../../assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
+    <link href="../../assets/libs/footable/css/footable.bootstrap.min.css" rel="stylesheet">
     <link href="../../dist/css/style.min.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="../../dist/css/myresponsivefile.css">-->
+    <link rel="stylesheet" href="../../dist/css/myresponsivefile.css">
     <link rel="stylesheet" href="../../dist/css/style-leads.css">
 </head>
 <body>
@@ -358,24 +359,12 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span></a>
-                            <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="index.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Classic </span></a></li>
-                                <li class="sidebar-item"><a href="index2.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Analytical </span></a></li>
-                                <li class="sidebar-item"><a href="index3.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Cryptocurrency </span></a></li>
-                                <li class="sidebar-item"><a href="index4.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Overview </span></a></li>
-                                <li class="sidebar-item"><a href="index5.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> E-Commerce </span></a></li>
-                                <li class="sidebar-item"><a href="index6.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Sales </span></a></li>
-                                <li class="sidebar-item"><a href="index7.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> General </span></a></li>
-                                <li class="sidebar-item"><a href="index8.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Trendy </span></a></li>
-                                <li class="sidebar-item"><a href="index9.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Campaign </span></a></li>
-                                <li class="sidebar-item"><a href="index10.html" class="sidebar-link"><i class="mdi mdi-adjust"></i><span class="hide-menu"> Modern </span></a></li>
-                            </ul>
+                            <a class="sidebar-link waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span></a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-tune-vertical"></i><span class="hide-menu">Leads </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="sidebar-type-minisidebar.html" class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span class="hide-menu"> Create Lead </span></a></li>
+                                <li class="sidebar-item"><a href="/Leads/create_leads" class="sidebar-link"><i class="mdi mdi-view-quilt"></i><span class="hide-menu"> Create Lead </span></a></li>
                                 <li class="sidebar-item"><a href="sidebar-type-iconsidebar.html" class="sidebar-link"><i class="mdi mdi-view-parallel"></i><span class="hide-menu"> My Leads </span></a></li>
                                 <li class="sidebar-item"><a href="sidebar-type-overlaysidebar.html" class="sidebar-link"><i class="mdi mdi-view-day"></i><span class="hide-menu"> Search Leads </span></a></li>
                                 <li class="sidebar-item"><a href="sidebar-type-fullsidebar.html" class="sidebar-link"><i class="mdi mdi-view-array"></i><span class="hide-menu"> All Leads </span></a></li>
@@ -472,22 +461,24 @@
             @RenderBody()
         </div>
         <footer class="footer text-center">
-            &copy; @DateTime.Now.Year All Rights Reserved by Leads CRM. Designed and Developed by <a href="https://devsprogrammers.com">devs Programmers</a>.
+            &copy; @DateTime.Now.Year All Rights Reserved by Leads CRM. Designed and Developed by <a class="text-white font-weight-500" href="https://devsprogrammers.com">devs Programmers</a>.
         </footer>
     </div>
     <div class="chat-windows"></div>
     <!-- All Jquery -->
     <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/extra-libs/taskboard/js/jquery.ui.touch-punch-improved.js"></script>
+    <script src="../../assets/extra-libs/taskboard/js/jquery-ui.min.js"></script>
     <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../../dist/js/app.min.js"></script>
-    <script src="../../dist/js/app.init.dark.js"></script>
+    <script src="../../dist/js/app.init.js"></script>
     <script src="../../dist/js/app-style-switcher.js"></script>
     <script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
     <script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
     <script src="../../dist/js/waves.js"></script>
     <script src="../../dist/js/sidebarmenu.js"></script>
-    <script src="../../dist/js/custom.min.js"></script>
+
     <script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
     <script src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
     <script src="../../assets/extra-libs/c3/d3.min.js"></script>
@@ -499,8 +490,17 @@
     <script src="../../assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="../../dist/js/pages/calendar/cal-init.js"></script>
     <script src="../../dist/js/pages/dashboards/dashboard6.js"></script>
+    <script src="../../assets/libs/footable/js/footable.min.js"></script>
+    <script src="../../dist/js/pages/tables/footable-init.js"></script>
+    <script src="../../dist/js/custom.min.js"></script>
 
-
+    <script>
+        $(".lead-type-btn-h").click( function () {
+            console.log("red");
+            $(this).removeClass("btn-secondary").siblings().addClass("btn-secondary");
+            $(this).addClass("btn-white").siblings().removeClass("btn-white");
+        })
+    </script>
 
 
 

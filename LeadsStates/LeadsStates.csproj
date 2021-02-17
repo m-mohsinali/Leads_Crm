@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeadsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4861,6 +4862,9 @@
     <Content Include="src\scss\responsive.scss" />
     <Content Include="src\scss\style.scss" />
     <Content Include="src\scss\variable.scss" />
+    <Content Include="Views\Leads\Leads.cshtml" />
+    <Content Include="Views\Leads\create_leads.cshtml" />
+    <Content Include="Views\Leads\lead_detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,3 +1,19 @@
 .page-wrapper {
     min-height: calc(100vh - 51px);
 }
+footer.footer {
+    background: #333843;
+    color: #afb5bb !important;
+}
+.dark-bg-white{
+    background-color:white !important;
+}
+.clock {
+    text-align: right;
+    color: black;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.clock span {
+    padding: 3px;
+}
