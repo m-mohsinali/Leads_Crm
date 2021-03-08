@@ -27,7 +27,7 @@ namespace LeadsStates.Repository
                         if (sqlCommand.Connection.State != System.Data.ConnectionState.Open)
                             sqlCommand.Connection.Open();
                         sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                        //sqlCommand.CommandText = Database.GET_BRANDS;
+                        sqlCommand.CommandText = Database.GET_BRANDS;
                         sqlCommand.Parameters.Add(new SqlParameter("UserId", UserId));
                         SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
@@ -83,7 +83,7 @@ namespace LeadsStates.Repository
                         if (sqlCommand.Connection.State != System.Data.ConnectionState.Open)
                             sqlCommand.Connection.Open();
                         sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                        //sqlCommand.CommandText = Database.REGISTER_BRAND;
+                        sqlCommand.CommandText = Database.REGISTER_BRAND;
                         sqlCommand.Parameters.Add(new SqlParameter("UserId", UserId));
                         //sqlCommand.Parameters.Add(new SqlParameter("BrandName", BrandName));
                         sqlCommand.Parameters.Add(new SqlParameter("SellerId", SellerId));
