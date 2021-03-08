@@ -7,5 +7,6 @@ namespace LeadsStates.Common
 {
     public class Database
     {
+        public const string GET_ALL_LEADS = "GETAllLeads";
     }
 }
