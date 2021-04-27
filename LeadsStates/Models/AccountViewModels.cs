@@ -68,7 +68,28 @@ namespace LeadsStates.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        [Required]        
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Required]
+        [Display(Name = "Mobile Number")]
+        public string MobileNumber { get; set; }
+        [Required]
+        [Display(Name = "Gender")]
+        public string Gender { get; set; }
+        [Required]
+        [Display(Name = "CNIC")]
+        public string CNIC { get; set; }
+        [Required]
+        [Display(Name = "Selary Type")]
+        public string SelaryType { get; set; }
 
+        [Required]
+        [Display(Name = "SelaryAmount")]
+        public float SelaryAmount { get; set; }
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
