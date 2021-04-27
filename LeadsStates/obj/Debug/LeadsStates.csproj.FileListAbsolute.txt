@@ -322,3 +322,6 @@ E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\Lead
 E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Debug\LeadsStates.csproj.CopyComplete
 E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Debug\LeadsStates.dll
 E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Debug\LeadsStates.pdb
+E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Debug\LeadsStates.Migrations.InitialCreate.resources
+E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Debug\LeadsStates.csproj.GenerateResource.cache
+E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Debug\LeadsStates.Migrations.userproperties.resources
