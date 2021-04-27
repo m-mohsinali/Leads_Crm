@@ -1,0 +1,474 @@
+﻿
+@{
+    ViewBag.Title = "Create Lead";
+}
+
+<div class="bg-white">
+    <div class="page-breadcrumb p-lg-4 pt-2">
+        <div class="row border-bottom pb-2">
+            <div class="col-7 align-self-center">
+                <h3 class="page-title pt-2">Create Lead</h3>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Lead</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-5 align-self-center">
+                <div class="clock"></div>
+            </div>
+        </div>
+    </div>
+    <div class="dark-bg-white p-md-4 p-3 mt-3 border shadow-lg m-lg-4">
+        <h2>Create Lead</h2>
+        <div class="row">
+            <div class="col-md-6 col-xl-4">
+                <div class="form-group">
+                    <label class="font-weight-800 ">Enter Phone Number</label>
+                    <input type="tel" class="form-control" id="primaryNumber" placeholder="Enter Phone Number">
+                </div>
+            </div>
+            <div class="col-12 my-2">
+                <button class="btn btn-secondary" onclick="CreateLeads()">Proceed</button>
+            </div>
+        </div>
+        <div id="LeadsDetails" style="display:none">
+            @*<div class="table-responsive">
+                <table class="table table-bordered m-t-30 table-hover contact-list-h">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                            <th>Type</th>
+                            <th>Created By</th>
+                            <th>Created On</th>
+                            <th>Taken Over By</th>
+                            <th>City</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-1 px-3">
+                                <a href="javascript:void(0)"><img src="../../assets/images/users/4.jpg" alt="user" width="40" class="rounded-circle" /></a>
+                            </td>
+                            <td>Hoor Hamza</td>
+                            <td>+123 456 789</td>
+                            <td>BUY</td>
+                            <td>demo</td>
+                            <td>12-10-2014</td>
+                            <td>demo</td>
+                            <td>Lahore</td>
+                            <td>Pak Arab</td>
+                            <td>
+                                <a href="javascript:void(0)" class="text-success font-weight-600">Open</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>*@
+            <div class="customer_detail pt-3">
+                <form class="lead_detail_form">
+                    <div class="px-3 py-2 bg-secondary text-white text-uppercase mb-2">Customer details</div>
+                    <div class="lead-type-h my-3">
+                        <div class="btn lead-type-btn-h btn-white mr-1 px-3 text-uppercase shadow">Buy</div>
+                        <div class="btn lead-type-btn-h btn-secondary mr-1 px-3 text-uppercase shadow">rent</div>
+                        <div class="btn lead-type-btn-h btn-secondary mr-1 px-3 text-uppercase shadow">seller</div>
+                        <div class="btn lead-type-btn-h btn-secondary mr-1 px-3 text-uppercase shadow">mortgage</div>
+                        <div class="btn lead-type-btn-h btn-secondary mr-1 px-3 text-uppercase shadow">lessee</div>
+                    </div>
+                    <div class="row mx-0">
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend" style=" max-width: 65px;">
+                                        <select class="form-control px-1" id="exampleFormControlSelect1">
+                                            <option>Mr.</option>
+                                            <option>Mrs.</option>
+                                            <option>Miss</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Enter Customer Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Primary Phone:</label>
+                                <input type="tel" class="form-control" id="PrimaryNumberForm" placeholder="03xx-xxxx-xxx">
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Secondary Phone:</label>
+                                <input type="tel" class="form-control" placeholder="03xx-xxxx-xxx">
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">location:</label>
+                                <input type="text" class="form-control" placeholder="Enter Location">
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Email:</label>
+                                <input type="email" class="form-control" placeholder="Enter Email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-3 py-2 bg-secondary text-white text-uppercase mb-2">Customer Requirment</div>
+                    <div class="row mx-0">
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">City:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Project:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Block:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mx-0">
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Property Type:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Homes Types:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">MIN Budget:</label>
+                                <input class="form-control" type="number" value="0" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">MAX Budget:</label>
+                                <input class="form-control" type="number" value="0" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Area:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">MIN:</label>
+                                <input type="number" class="form-control" value="0" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Area:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">MAX Budget:</label>
+                                <input type="number" class="form-control" value="0" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Lead Priority:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Client Type:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Allocated To:</label>
+                                <select class="custom-select" id="inlineFormCustomSelect">
+                                    <option selected="">Choose...</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">BEDS:</label>
+                                <input type="number" class="form-control" value="0" />
+                            </div>
+                        </div>
+                        <div class="col-12 p-2">
+                            <div class="form-group">
+                                <label class="font-weight-800 text-dark">Source:</label>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="SMS_Lead">
+                                    <label class="custom-control-label" for="SMS_Lead">SMS Lead</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="OLX">
+                                    <label class="custom-control-label" for="OLX">OLX</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Email_Blast">
+                                    <label class="custom-control-label" for="Email_Blast">Email Blast</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Client_Reference">
+                                    <label class="custom-control-label" for="Client_Reference">Client Reference</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Google_Adword">
+                                    <label class="custom-control-label" for="Google_Adword">Google Adword</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Radio">
+                                    <label class="custom-control-label" for="Radio">Radio</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Facebook">
+                                    <label class="custom-control-label" for="Facebook">Facebook</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="TV">
+                                    <label class="custom-control-label" for="TV">TV</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Personal">
+                                    <label class="custom-control-label" for="Personal">Personal</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Newspaper">
+                                    <label class="custom-control-label" for="Newspaper">Newspaper</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Email_Lead">
+                                    <label class="custom-control-label" for="Email_Lead">Email Lead</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Youtube">
+                                    <label class="custom-control-label" for="Youtube">Youtube</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Walk-in">
+                                    <label class="custom-control-label" for="Walk-in">Walk-in</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="BillBoards">
+                                    <label class="custom-control-label" for="BillBoards">BillBoards</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Streamers">
+                                    <label class="custom-control-label" for="Streamers">Streamers</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="SMS_Marketing">
+                                    <label class="custom-control-label" for="SMS_Marketing">SMS Marketing</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Client_Facebook">
+                                    <label class="custom-control-label" for="Client_Facebook">Client Facebook</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Other">
+                                    <label class="custom-control-label" for="Other">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-lg-3 col-md-4 col-6 p-2">
+                            <div class="form-check form-check-inline">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="Newspaper_Classifieds">
+                                    <label class="custom-control-label" for="Newspaper_Classifieds">Newspaper_Classifieds</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-2 text-center">
+                        <button class="btn btn-secondary text-uppercase" data-toggle="modal" data-target="#customer" type="button">Create</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade bs-example-modal-sm" id="customer" tabindex="-1" role="dialog" aria-labelledby="customerTitle" aria-hidden="true">
+    <div class="modal-dialog modal-sm su_err_modal" style="transform: translateY(-50%); top: 50%;">
+        <div class="modal-content text-center pt-3">
+            <div class="far fa-check-circle subit-check font-25 text-success"></div>
+            <div class="modal-body text-dark p-2">Customer created successfully!</div>
+            <div class="my-2 text-center">
+                <a href="/Leads/lead_detail" class="btn btn-success text-uppercase">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#LeadsDetails").fadeOut();
+        
+    });
+    function CreateLeads() {        
+        if ($('#primaryNumber').val() != "") {
+            $.ajax({
+                type: "POST", url: '@Url.Action("CreateLead", "Leads")',
+                success: function (data) {
+                    alert(data)
+                    $("#PrimaryNumberForm").val($('#primaryNumber').val())
+                    $("#LeadsDetails").css({
+                        display: "block"
+                    });                   
+                },
+                data: { "PrimaryNumber": $('#primaryNumber').val() },
+                accept: 'application/json'
+            });
+        }
+        else {
+            alert("Number is required");
+        }
+
+    }
+
+</script>

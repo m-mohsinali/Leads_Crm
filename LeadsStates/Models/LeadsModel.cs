@@ -7,7 +7,7 @@ namespace LeadsStates.Models
 {
     public class LeadsModel
     {
-        public int Id { get; set; }
+        public int Id { get; set; } = 0;
         public string Name { get; set; }
         public string Email { get; set; }
         public string PrimaryNumber { get; set; }
@@ -29,6 +29,7 @@ namespace LeadsStates.Models
         public string ClientType { get; set; }
         public string AllocatedUser { get; set; }
         public int Beds { get; set; }
+        public string Status { get; set; }
         public string Source { get; set; }
         public string CreatedOn { get; set; }
     }

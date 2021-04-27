@@ -15,7 +15,7 @@ namespace LeadsStates.Repository
         {
             _connectionString = "data source=54.236.252.53;initial catalog=Grit_Stg;user id=gritdev;password=Gr1tDev2019;";
         }
-        public IEnumerable<LeadsModel> GetBrands(string UserId)
+        public IEnumerable<LeadsModel> GetAllLeads(string UserId)
         {
             List<LeadsModel> objList = new List<LeadsModel>();
             using (SqlConnection con = new SqlConnection(_connectionString))
@@ -27,8 +27,8 @@ namespace LeadsStates.Repository
                         if (sqlCommand.Connection.State != System.Data.ConnectionState.Open)
                             sqlCommand.Connection.Open();
                         sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                        sqlCommand.CommandText = Database.GET_BRANDS;
-                        sqlCommand.Parameters.Add(new SqlParameter("UserId", UserId));
+                        sqlCommand.CommandText = Database.GET_ALL_LEADS;
+                        //sqlCommand.Parameters.Add(new SqlParameter("UserId", UserId));
                         SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
                         while (sqlDataReader.Read())

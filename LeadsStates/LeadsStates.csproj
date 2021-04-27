@@ -4740,7 +4740,13 @@
     <Content Include="dist\js\pages\forms\typeahead\nfl.json" />
     <Content Include="dist\js\pages\forms\typeahead\nhl.json" />
     <Content Include="dist\js\pages\forms\typeahead\typeahead.js.jquery.json" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\leadsestatescrm.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Leadsstates - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

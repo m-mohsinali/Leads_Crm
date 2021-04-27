@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Release\Package\PackageTmp" />
+  <setAcl path="E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="E:\Mohsin\devprogramers\leads_CRM_2021_02_15\leads_CRM_2021_02_15\Leads_Crm\LeadsStates\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

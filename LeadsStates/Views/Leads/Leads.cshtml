@@ -1,7 +1,95 @@
-﻿
+﻿@model List<LeadsStates.Models.LeadsModel>
 @{
     ViewBag.Title = "Leads";
 }
 
-<h2>Leads</h2>
+<div class="container-fluid">
+    <div class="bg-white rounded shadow p-3 mt-3">
+        <div class="row ">
+            <div class="col-md-8">
+                <h2 class="mb-0 text-black font-wight-bold">My Leads</h2>
+                <p class="mb-0 font-12 text-secondary">Demo demo</p>
+            </div>
+            <div class="col-md-4">
+                <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="bg-white shadow rounded p-4 mt-5 text-center">
+            <div class="row">
+                <div class="col-md-3">
+                    <span class="bg-secondary rounded-circle users">
+                        <i class="fas fa-user text-white pl-1"></i>
+                    </span>
+                    <span class="pl-2 font-20 text-muted font-weight-normal">
+                        Fresh Lead
+                    </span>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <div class="bg-success borderds"></div><span class="float-left pl-2"> After 7 Days</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <div class="bg-info borderds"></div><span class="float-left pl-2"> Under 7 Days</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <div class="bg-danger borderds"></div><span class="float-left pl-2">Under 24 Hours</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="dropdown-divider mt-4 "></div>
+            <div class="row ml-0 mr-0 mt-3">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 text-left">
+                        <a href="/Leads/lead_detail/@item.Id">
+                            <div class="bg-white shadow rounded p-3">
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <i class="fas fa-eye cr-p"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div>
+                                            <h5 class="mb-0 font-weight-bold text-black">@item.Name</h5>
+                                        </div>
+                                        <div class="mt-3">
+                                            <span class="bg-secondary rounded-circle users1">
+                                                <i class="fas fa-user text-white"></i>
+                                            </span>
+                                        </div>
+                                        <div class="pt-3">
+                                            <p class="mb-0 text-muted">@item.PrimaryNumber</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <p class="mb-0 text-muted">@item.Id</p>
+                                        <div class="text-center mt-3">
+                                            <span class="font-weight-bold mr-3">@item.LeadType</span>
+                                            <span class="text-sendary mr-3">
+                                                <i class="fas fa-share-alt"></i>
+                                            </span>
+                                            <span class="text-danger">
+                                                <i class="fas fa-thermometer-full"></i>
+                                            </span>
+                                        </div>
+                                        <p class="mb-0 text-muted mt-3">@item.CreatedOn</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
 
