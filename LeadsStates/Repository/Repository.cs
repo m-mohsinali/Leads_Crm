@@ -75,6 +75,99 @@ namespace LeadsStates.Repository
                 }
             }
         }
+        public IEnumerable<LeadsModel> GetAssignedLeads(string UserId)
+        {
+            List<LeadsModel> objList = new List<LeadsModel>();
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand(_connectionString, con))
+                {
+                    try
+                    {
+                        if (sqlCommand.Connection.State != System.Data.ConnectionState.Open)
+                            sqlCommand.Connection.Open();
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlCommand.CommandText = Database.Get_Assigned_Leads;
+                        sqlCommand.Parameters.Add(new SqlParameter("UserId", UserId));
+                        SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                        while (sqlDataReader.Read())
+                        {
+                            LeadsModel obj = new LeadsModel();
+                            obj.Id = Convert.ToInt32(sqlDataReader["Id"]);
+                            obj.Name = sqlDataReader["Name"].ToString();
+                            obj.Email = sqlDataReader["Email"].ToString();
+                            obj.PrimaryNumber = sqlDataReader["PrimaryNumber"].ToString();
+                            obj.SecoundryNumber = sqlDataReader["SecoundryNumber"].ToString();
+                            obj.Address = sqlDataReader["Address"].ToString();
+                            obj.LeadType = sqlDataReader["LeadType"].ToString();
+                            obj.City = sqlDataReader["CityName"].ToString();
+                            obj.Project = sqlDataReader["ProjectName"].ToString();
+                            obj.Phase = sqlDataReader["PhaseName"].ToString();
+                            obj.Block = sqlDataReader["BlockName"].ToString();
+                            obj.PropertyType = sqlDataReader["PropertyType"].ToString();
+                            obj.HomeType = sqlDataReader["HomeType"].ToString();
+                            obj.MinBudget = Convert.ToDecimal(sqlDataReader["MinBudget"]);
+                            obj.MaxBudget = Convert.ToDecimal(sqlDataReader["MaxBudget"]);
+                            obj.MinArea = Convert.ToDecimal(sqlDataReader["MinArea"]);
+                            obj.MaxArea = Convert.ToDecimal(sqlDataReader["MaxArea"]);
+                            obj.AreaType = sqlDataReader["AreaType"].ToString();
+                            obj.LeadPriority = sqlDataReader["LeadPriority"].ToString();
+                            obj.ClientType = sqlDataReader["ClientType"].ToString();
+                            obj.AllocatedUser = sqlDataReader["AllocatedUser"].ToString();
+                            obj.Beds = Convert.ToInt32(sqlDataReader["Beds"]);
+                            obj.Source = sqlDataReader["Source"].ToString();
+                            obj.Status = sqlDataReader["Status"].ToString();
+                            obj.CreatedOn = sqlDataReader["CreatedOn"].ToString();
+                            objList.Add(obj);
+                        }
+                        sqlDataReader.Close();
+                        sqlCommand.Dispose();
+                        return objList;
+                    }
+                    catch (Exception ex)
+                    {
+                        return objList;
+                    }
+                }
+            }
+        }
+        public IEnumerable<UserModel> GetAllUsers()
+        {
+            List<UserModel> objList = new List<UserModel>();
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand(_connectionString, con))
+                {
+                    try
+                    {
+                        if (sqlCommand.Connection.State != System.Data.ConnectionState.Open)
+                            sqlCommand.Connection.Open();
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlCommand.CommandText = Database.GET_ALL_USERS;
+                        //sqlCommand.Parameters.Add(new SqlParameter("UserId", UserId));
+                        SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                        while (sqlDataReader.Read())
+                        {
+                            UserModel obj = new UserModel();
+                            obj.Id = sqlDataReader["Id"].ToString();
+                            obj.FirstName = sqlDataReader["FirstName"].ToString() +" " + sqlDataReader["LastName"].ToString();
+                            obj.LastName = sqlDataReader["LastName"].ToString();
+                            obj.Email = sqlDataReader["Email"].ToString();
+                            objList.Add(obj);
+                        }
+                        sqlDataReader.Close();
+                        sqlCommand.Dispose();
+                        return objList;
+                    }
+                    catch (Exception ex)
+                    {
+                        return objList;
+                    }
+                }
+            }
+        }
         public LeadsModel GETLeadById(int LeadId)
         {
             LeadsModel obj = new LeadsModel();
@@ -87,8 +180,8 @@ namespace LeadsStates.Repository
                         if (sqlCommand.Connection.State != System.Data.ConnectionState.Open)
                             sqlCommand.Connection.Open();
                         sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                        sqlCommand.CommandText = Database.GET_ALL_LEADS;
-                        //sqlCommand.Parameters.Add(new SqlParameter("UserId", UserId));
+                        sqlCommand.CommandText = Database.GET_LEAD_BY_ID;
+                        sqlCommand.Parameters.Add(new SqlParameter("Id", LeadId));
                         SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
                         while (sqlDataReader.Read())
@@ -213,6 +306,56 @@ namespace LeadsStates.Repository
                     catch (Exception ex)
                     {
                         return 0;
+                    }
+                }
+            }
+        }
+        public bool UpdateLeadStatus(int leadId , string Status)
+        {            
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand(_connectionString, con))
+                {
+                    try
+                    {
+                        if (sqlCommand.Connection.State != System.Data.ConnectionState.Open)
+                            sqlCommand.Connection.Open();
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlCommand.CommandText = Database.UPDATE_LEAD_STATUS;
+                        sqlCommand.Parameters.Add(new SqlParameter("LeadId", leadId));
+                        sqlCommand.Parameters.Add(new SqlParameter("Status", Status));
+                        sqlCommand.ExecuteNonQuery();
+                        sqlCommand.Dispose();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        public bool SahreLead(int leadId, string UserId)
+        {
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand(_connectionString, con))
+                {
+                    try
+                    {
+                        if (sqlCommand.Connection.State != System.Data.ConnectionState.Open)
+                            sqlCommand.Connection.Open();
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                        sqlCommand.CommandText = Database.SAHRE_LEAD;
+                        sqlCommand.Parameters.Add(new SqlParameter("LeadId", leadId));
+                        sqlCommand.Parameters.Add(new SqlParameter("UserId", UserId));
+                        sqlCommand.ExecuteNonQuery();
+                        sqlCommand.Dispose();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
                     }
                 }
             }

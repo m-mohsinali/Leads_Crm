@@ -238,7 +238,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3 p-2">
+                        @*<div class="col-md-3 p-2">
                             <div class="form-group">
                                 <label class="font-weight-800 text-dark">Allocated To:</label>
                                 <select class="custom-select" id="AllocatedUser">
@@ -246,7 +246,7 @@
                                     <option value="admin@leadscrm.com">admin@leadscrm.com</option>                                    
                                 </select>
                             </div>
-                        </div>
+                        </div>*@
                         <div class="col-md-3 p-2">
                             <div class="form-group">
                                 <label class="font-weight-800 text-dark">BEDS:</label>
@@ -496,7 +496,7 @@
                 "MaxArea": $('#MaxArea').val(),
                 "LeadPriority": $('#LeadPriority').val(),
                 "ClientType": $('#ClientType').val(),
-                "AllocatedUser": $('#AllocatedUser').val(),
+                "AllocatedUser": " ",
                 "Beds": $('#Beds').val(),
                 "Status":"Fresh Lead",
                 "Source": $('#primaryNumber').val(),

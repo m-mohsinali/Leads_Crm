@@ -8,6 +8,7 @@ using LeadsStates.Repository;
 
 namespace LeadsStates.Controllers
 {
+    [Authorize]
     public class LeadsController : Controller
     {
         Repository.Repository repository = new Repository.Repository();
@@ -15,7 +16,11 @@ namespace LeadsStates.Controllers
         public ActionResult Index()
         {
             string userId = User.Identity.Name;
-           var objlist = repository.GetAllLeads();
+            var objlist = repository.GetAssignedLeads(userId);
+            if (userId == "admin@leadscrm.com")
+            {
+                 objlist = repository.GetAllLeads();
+            }
             return View("leads", objlist.ToList());
         }
         public ActionResult create_leads()
@@ -26,10 +31,13 @@ namespace LeadsStates.Controllers
         }
         public ActionResult lead_detail(int id)
         {
-            var obj = repository.GETLeadById(id);
+            LeadsViewModel leadsVM = new LeadsViewModel();
+            leadsVM.LeadsDetails = repository.GETLeadById(id);
+            leadsVM.Users = repository.GetAllUsers();
+            
             ViewBag.Message = "Your application description page.";
 
-            return View(obj);
+            return View(leadsVM);
         }
         public int CreateLead (string PrimaryNumber)
         {
@@ -37,6 +45,7 @@ namespace LeadsStates.Controllers
         }
         public bool UpdateLead(LeadsModel lead )
         {
+            lead.AllocatedUser = User.Identity.Name;
             try
             {
                 var obj = repository.UpdateLead(lead);
@@ -47,6 +56,32 @@ namespace LeadsStates.Controllers
                 return false;
             }
             
+        }
+        public bool UpdateLeadStatus(int leadId, string Status)
+        {
+            try
+            {
+                var obj = repository.UpdateLeadStatus(leadId , Status);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+        public bool SahreLead(int leadId, string UserId)
+        {
+            try
+            {
+                var obj = repository.SahreLead(leadId, UserId);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
         }
     }
 }
