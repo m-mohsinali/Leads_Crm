@@ -26,8 +26,12 @@ namespace LeadsStates.Controllers
         public ActionResult create_leads()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
+            LocationVm locationVm = new LocationVm();
+            locationVm.Cities = repository.GetAllCities();
+            locationVm.Projects = repository.GetProjects();
+            locationVm.Phase = repository.GetPhases();
+            locationVm.Blocks = repository.GetBlocks();
+            return View(locationVm);
         }
         public ActionResult lead_detail(int id)
         {

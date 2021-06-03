@@ -1,0 +1,122 @@
+﻿@model LeadsStates.Models.LocationVm
+@{
+    ViewBag.Title = "AddBlock";
+}
+
+<div class="container-fluid">
+    <div class="bg-white rounded shadow p-3 mt-3">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="mb-0 text-black font-wight-bold">Add Location Block</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-white rounded shadow p-4 mt-5">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            <label for="" class="d-block">Select City:</label>
+                            @Html.DropDownListFor(model => model.SelectedCity, new SelectList(Model.Cities, "Id", "CityName"), new { @class = "form-control", @Id = "CityId" })                            
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="" class="d-block">Select Location:</label>
+                            @Html.DropDownListFor(model => model.SelectedProject, new SelectList(Model.Projects, "Id", "ProjectName"), new { @class = "form-control", @Id = "ProjectId" })
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="" class="d-block">Select Phase:</label>
+                            @Html.DropDownListFor(model => model.SelectedPhase, new SelectList(Model.Phase, "Id", "PhaseName"), new { @class = "form-control", @Id = "PhaseId" })
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="" class="d-block">Enter Block:</label>
+                            <input type="text" class="form-control" id="BlockName" placeholder="block name">
+                        </div>
+                        @*<div class="col-md-6 mt-2">
+                            <div class="form-check pl-0">
+                                <label class="d-block" for="defaultCheck1">
+                                    IsActive
+                                </label>
+                                <input type="checkbox" value="" id="defaultCheck1">
+                            </div>
+                        </div>*@
+                        <div class="col-md-12 text-center mt-4">
+                            <button class="btn btn-secondary" onclick="addnewBlock()" type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+                <table class="table mt-5">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">City Name</th>
+                            <th scope="col">Location Name</th>
+                            <th scope="col">Phases</th>
+                            <th scope="col">Block Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Blocks)
+                        {
+                            <tr>
+                                <th scope="row">@item.Id</th>
+                                <td>@item.CityName</td>
+                                <td>@item.ProjectName</td>
+                                <td>@item.PhaseName</td>
+                                <td>@item.BlockName</td>
+                                <td>
+                                    <button class="btn btn-danger" type="button" onclick="deleteProject(@item.Id)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function addnewBlock () {
+        $.ajax({
+                type: "POST", url: '@Url.Action("AddNewBlock", "Location")',
+                success: function (data) {
+
+                    window.location.reload();
+
+                },
+            data: {
+                "CityId": $('#CityId').val(),
+                "ProjectId": $('#ProjectId').val(),
+                "PhaseId": $('#PhaseId').val(),
+                "BlockName": $('#BlockName').val(),
+
+
+            },
+                accept: 'application/json'
+            });
+
+    }
+    function deleteProject (id) {
+       // alert("hello")
+        $.ajax({
+                type: "POST", url: '@Url.Action("DeleteBlock", "Location")',
+                success: function (data) {
+
+                    window.location.reload();
+
+                },
+            data: {
+                "Id": id
+
+            },
+                accept: 'application/json'
+            });
+
+    }
+</script>
+

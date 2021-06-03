@@ -1,0 +1,174 @@
+﻿@model LeadsStates.Models.TaskVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User Ref</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Todo Type</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Tasks)
+            {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.UserName</td>
+                <td>@item.Taskdescription</td>
+                <td>@item.TaskDate</td>
+                <td>@item.TaskName</td>
+                <td>@item.Status</td>
+                <td>
+                    <button class="btn btn-danger" type="button" onclick="deleteTask(@item.Id)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <button class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+            <i class="fas fa-plus"></i>
+            Add New
+        </button>
+        @*<button class="btn btn-dark ml-3" data-toggle="modal" data-target="#exampleModal1">
+            <i class="fas fa-minus"></i> Add New
+        </button>*@
+    </div>
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered w-100">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">LeadId</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Date & Time</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DropDownListFor(model => model.SelectedLead, new SelectList(Model.Leads, "Id", "Name"), new { @class = "form-control", @Id = "LeadId" })
+                                    @*<select name="" id="" class="form-control">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>*@
+                                </td>
+                                <td>
+                                    <select name="" id="TaskName" class="form-control">
+                                        <option value="Call">Call</option>
+                                        <option value="Meeting">Meeting</option>
+                                        <option value="Visit">Visit</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input id="taskDate" placeholder="Select your date" type="date" class="form-control">
+                                </td>
+                                <td>
+                                    <textarea id="taskdescription" class="w-100 form-control" rows="1"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="AddTask" onclick="addnewTask()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(function () {
+            $('#datepicker').datepicker({
+                format: 'dd-mm-yyyy',
+                startDate: '+1d'
+            });
+        });
+    function addnewTask () {
+       // alert("hello")
+        $.ajax({
+                type: "POST", url: '@Url.Action("CreateTask", "Tasks")',
+                success: function (data) {
+                    //alert(data)
+                    //localStorage.setItem("LeadId", data)
+                    //localStorage.setItem('LeadType', 'Buy')
+                    //$("#PrimaryNumberForm").val($('#primaryNumber').val())
+                    //$("#LeadsDetails").css({
+                    //    display: "block"
+                    //});
+                    $("#exampleModal").modal("hide");
+
+                },
+            data: {
+                "LeadId": $('#LeadId').val(),
+                "TaskName": $('#TaskName').val(),
+                "TaskStatus": "new",
+                "TaskDate": $('#taskDate').val(),
+                "TaskDescription": $('#taskdescription').val(),
+
+            },
+                accept: 'application/json'
+            });
+
+    }
+    function deleteTask (id) {
+       // alert("hello")
+        $.ajax({
+                type: "POST", url: '@Url.Action("DeleteTask", "Tasks")',
+                success: function (data) {
+
+                    window.location.reload();
+
+                },
+            data: {
+                "Id": id
+
+            },
+                accept: 'application/json'
+            });
+
+    }
+</script>
+

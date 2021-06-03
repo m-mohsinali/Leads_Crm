@@ -1,0 +1,101 @@
+﻿@model LeadsStates.Models.LocationVm 
+@{
+    ViewBag.Title = "AddProject";
+}
+
+<div class="container-fluid">
+    <div class="bg-white rounded shadow p-3 mt-3">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="mb-0 text-black font-wight-bold">Add Location</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-white rounded shadow p-4 mt-5">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            <label for="" class="d-block">Select City:</label>
+                            @Html.DropDownListFor(model => model.SelectedCity, new SelectList(Model.Cities, "Id", "CityName"), new { @class = "form-control", @Id = "CityId" })
+                        </div>                        
+                        <div class="col-md-6 mt-2">
+                            <label for="" class="d-block">Enter Project Name:</label>
+                            <input type="text" id="ProjectName" class="form-control" placeholder="Project name">
+                        </div>
+                      
+                        <div class="col-md-12 text-center mt-4">
+                            <button class="btn btn-secondary" type="submit" onclick="addnewTask()">Save</button>
+                        </div>
+                    </div>
+                </form>
+                <table class="table mt-5">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">City Name</th>
+                            <th scope="col">Location Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Projects)
+                        {
+                            <tr>
+                                <th scope="row">@item.Id</th>
+                                <td>@item.CityName</td>
+                                <td>@item.ProjectName</td>
+                              <td>
+                                    <button class="btn btn-danger" type="button" onclick="deleteProject(@item.Id)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                              </td>
+                            </tr>
+
+                        }
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function addnewTask () {
+       // alert("hello")
+        $.ajax({
+                type: "POST", url: '@Url.Action("AddNewProject", "Location")',
+                success: function (data) {
+
+                    window.location.reload();
+
+                },
+            data: {
+                "CityId": $('#CityId').val(),
+                "ProjectName": $('#ProjectName').val()
+
+            },
+                accept: 'application/json'
+            });
+
+    }
+    function deleteProject (id) {
+       // alert("hello")
+        $.ajax({
+                type: "POST", url: '@Url.Action("DeleteProject", "Location")',
+                success: function (data) {
+
+                    window.location.reload();
+
+                },
+            data: {
+                "Id": id              
+
+            },
+                accept: 'application/json'
+            });
+
+    }
+</script>
+
